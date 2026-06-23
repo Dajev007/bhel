@@ -32,7 +32,7 @@ export default function Footer() {
               <img
                 src="/img/BHEL-Engineering-Onsite-Line-Boring-Logo.png"
                 alt="BHEL Engineering"
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain rounded-2xl"
               />
             </div>
             <p className="text-secondary-400 mb-6 leading-relaxed">

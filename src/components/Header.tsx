@@ -44,7 +44,7 @@ export default function Header() {
             <img
               src="/img/BHEL-Engineering-Onsite-Line-Boring-Logo.png"
               alt="BHEL Engineering"
-              className="h-12 md:h-14 w-auto"
+              className="h-12 md:h-14 w-auto rounded-2xl"
             />
           </Link>
 
