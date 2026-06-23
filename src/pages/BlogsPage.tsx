@@ -1,67 +1,6 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, User, Clock, ChevronRight } from 'lucide-react';
-
-const blogPosts = [
-  {
-    id: 1,
-    title: 'The True Cost of Equipment Downtime in Mining',
-    excerpt: 'When heavy machinery stops, the financial impact ripples through the entire operation. Discover how rapid mobile line boring response teams mitigate these losses.',
-    date: 'October 14, 2025',
-    author: 'BHEL Engineering',
-    category: 'Industry Insights',
-    readTime: '4 min read',
-    color: 'bg-primary-700',
-  },
-  {
-    id: 2,
-    title: 'Why Acoustic Alignment is Critical for Bearing Installation',
-    excerpt: 'Installing bearings and bushes isn\'t just about pressing them in. Learn why acoustic alignment techniques extend component lifespan by up to 40%.',
-    date: 'September 28, 2025',
-    author: 'BHEL Engineering',
-    category: 'Technical Focus',
-    readTime: '6 min read',
-    color: 'bg-accent',
-  },
-  {
-    id: 3,
-    title: 'Mobile Line Boring vs. Workshop Machining: A Comparison',
-    excerpt: 'Should you dismantle your equipment or call a mobile machining unit? We break down the costs, timeframes, and quality outcomes of both approaches.',
-    date: 'August 12, 2025',
-    author: 'BHEL Engineering',
-    category: 'Services',
-    readTime: '5 min read',
-    color: 'bg-green-600',
-  },
-  {
-    id: 4,
-    title: 'Preventative Maintenance Tips for Heavy Excavators',
-    excerpt: 'A proactive approach to pin and bore wear can save hundreds of thousands of dollars. Key inspection points every maintenance manager should check.',
-    date: 'July 05, 2025',
-    author: 'BHEL Engineering',
-    category: 'Maintenance Tips',
-    readTime: '7 min read',
-    color: 'bg-purple-600',
-  },
-  {
-    id: 5,
-    title: 'Navigating Remote FIFO Engineering Challenges',
-    excerpt: 'Working on remote sites in the Pilbara and Goldfields brings unique logistical hurdles. How our mobile units prepare for the unexpected.',
-    date: 'June 19, 2025',
-    author: 'BHEL Engineering',
-    category: 'Our Operations',
-    readTime: '4 min read',
-    color: 'bg-orange-600',
-  },
-  {
-    id: 6,
-    title: 'The Evolution of Portable Hofmann Triangle Equipment',
-    excerpt: 'An inside look at the precision tools we use to achieve OEM-level tolerances in the dirtiest, dustiest conditions imaginable.',
-    date: 'May 02, 2025',
-    author: 'BHEL Engineering',
-    category: 'Equipment',
-    readTime: '5 min read',
-    color: 'bg-blue-800',
-  },
-];
+import { blogPosts } from './BlogDetailPage';
 
 function PageHero() {
   return (
@@ -96,7 +35,7 @@ function FeaturedPost() {
   return (
     <section className="pt-24 pb-12 bg-secondary-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row group cursor-pointer hover:shadow-2xl transition-all duration-500">
+        <Link to={`/blogs/${post.id}`} className="block bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row group hover:shadow-2xl transition-all duration-500">
           <div className={`lg:w-1/2 p-12 flex flex-col justify-center relative overflow-hidden ${post.color}`}>
             <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent mix-blend-overlay"></div>
             <span className="relative z-10 inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-bold tracking-wide uppercase mb-6 self-start backdrop-blur-sm">
@@ -126,7 +65,7 @@ function FeaturedPost() {
               </span>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </section>
   );
@@ -141,9 +80,10 @@ function BlogGrid() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post, index) => {
             return (
-              <div 
+              <Link 
                 key={post.id} 
-                className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col group cursor-pointer hover:shadow-xl transition-all duration-500 animate-fade-in-up"
+                to={`/blogs/${post.id}`}
+                className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-500 animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className={`h-48 ${post.color} relative overflow-hidden flex items-end p-6`}>
@@ -169,7 +109,7 @@ function BlogGrid() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
