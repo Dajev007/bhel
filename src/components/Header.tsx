@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, Menu, X, Wrench } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,18 +40,12 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className={`p-2 rounded-lg ${transparent ? 'bg-white/10' : 'bg-primary-700'}`}>
-              <Wrench className="w-8 h-8 text-white" />
-            </div>
-            <div>
-              <span className={`text-xl font-bold ${transparent ? 'text-white' : 'text-primary-700'}`}>
-                BHEL
-              </span>
-              <span className={`block text-xs ${transparent ? 'text-primary-100' : 'text-secondary-500'}`}>
-                Engineering
-              </span>
-            </div>
+          <Link to="/" className="flex items-center">
+            <img
+              src="/img/BHEL-Engineering-Onsite-Line-Boring-Logo.png"
+              alt="BHEL Engineering"
+              className="h-12 md:h-14 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -1,24 +1,49 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Phone, ChevronDown, Wrench, Flame, Target, Settings, CircleDot,
-  AlertTriangle, CheckCircle, Truck, Shield, Award, Users,
-  ArrowRight, Gauge, Cog, Clock, MapPin, Star,
+  Phone, ChevronDown, CheckCircle, Truck, Shield, Award, Users,
+  ArrowRight, Gauge, Clock, MapPin, Star, Target,
 } from 'lucide-react';
 
 function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
   useEffect(() => { setIsVisible(true); }, []);
 
-  return (
-    <section className="relative min-h-screen flex items-center hero-gradient overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
+  const bannerImages = [
+    '/img/Banner-PC-Fully-mobile-Updated-scaled.jpg',
+    '/img/BHEL-WEB-BNR-scaled.jpg',
+    '/img/Banner-with-Mobile-1.jpg',
+  ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % bannerImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [bannerImages.length]);
+
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background Image Slider */}
+      {bannerImages.map((img, index) => (
+        <div
+          key={img}
+          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+          style={{ opacity: currentSlide === index ? 1 : 0 }}
+        >
+          <img
+            src={img}
+            alt={`BHEL Engineering Banner ${index + 1}`}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ))}
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-900/85 via-primary-900/70 to-primary-900/50" />
+
+      {/* Decorative glows */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary-300/20 rounded-full blur-3xl animate-pulse-slow animation-delay-500" />
 
@@ -92,6 +117,20 @@ function Hero() {
           </div>
         </div>
 
+        {/* Slide Indicators */}
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2">
+          {bannerImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                currentSlide === index ? 'bg-accent w-8' : 'bg-white/40 hover:bg-white/60'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <a href="#services-overview" className="text-white/60 hover:text-white transition-colors">
             <ChevronDown className="w-8 h-8" />
@@ -102,6 +141,30 @@ function Hero() {
   );
 }
 
+/* ── Middle Image Banner ─────────────────────────────────── */
+function MiddleBanner() {
+  return (
+    <section className="relative">
+      <img
+        src="/img/BHEL-Middle-Image-Home-Creative.jpg"
+        alt="BHEL Engineering - Precision Machining Solutions"
+        className="w-full h-[300px] md:h-[400px] object-cover"
+      />
+      <div className="absolute inset-0 bg-primary-900/60 flex items-center justify-center">
+        <div className="text-center text-white max-w-3xl px-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            Your Trusted On-Site Engineering Partner
+          </h2>
+          <p className="text-lg md:text-xl text-primary-100">
+            Delivering precision machining solutions to mining, construction, and industrial operations across Western Australia.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Services Overview ─────────────────────────────────── */
 function ServicesOverview() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -112,12 +175,12 @@ function ServicesOverview() {
   }, []);
 
   const services = [
-    { icon: <Settings className="w-8 h-8" />, title: 'Mobile Line Boring', desc: 'On-site bore welding & machining (38mm–500mm+) using precision Hofmann Triangle equipment. No dismantling needed.', features: ['On-site service', '38mm–500mm+ range', 'Hofmann equipment'], id: 'line-boring' },
-    { icon: <Flame className="w-8 h-8" />, title: 'Light Fabrication & Welding', desc: 'Custom sheet metal work, MIG/TIG/Stick welding, and part fabrication done to spec — fast and precise.', features: ['MIG/TIG/Stick welding', 'Custom fabrication', 'On-site service'], id: 'fabrication' },
-    { icon: <Target className="w-8 h-8" />, title: 'Bore Facing', desc: 'Restore worn faces, flanges, and pivot points to OEM spec — ensuring smooth alignment and reduced wear.', features: ['Flange facing', 'Surface reconditioning', 'Precision alignment'], id: 'bore-facing' },
-    { icon: <Cog className="w-8 h-8" />, title: 'Mechanical Design', desc: 'We design, build, and test custom tools, brackets, and jigs tailored for your site needs.', features: ['Custom tooling', 'Site-specific solutions', 'Full design service'], id: 'mechanical-design' },
-    { icon: <CircleDot className="w-8 h-8" />, title: 'Bush & Bearing Installation', desc: 'Accurate on-site installation with acoustic alignment for longer-lasting machinery performance.', features: ['Precision installation', 'Acoustic alignment', 'Extended equipment life'], id: 'bush-bearing' },
-    { icon: <AlertTriangle className="w-8 h-8" />, title: 'Breakdown Repairs', desc: 'Rapid mobile repair for unexpected failures and scheduled servicing to keep your equipment running strong.', features: ['24/7 availability', 'Rapid response', 'Mobile repair unit'], id: 'breakdown' },
+    { image: '/img/Mobile-Line-Boring-Service.jpg', title: 'Mobile Line Boring', desc: 'On-site bore welding & machining (38mm–500mm+) using precision Hofmann Triangle equipment. No dismantling needed.', features: ['On-site service', '38mm–500mm+ range', 'Hofmann equipment'], id: 'line-boring' },
+    { image: '/img/Light-Fabrication-Welding-Home.jpg', title: 'Light Fabrication & Welding', desc: 'Custom sheet metal work, MIG/TIG/Stick welding, and part fabrication done to spec — fast and precise.', features: ['MIG/TIG/Stick welding', 'Custom fabrication', 'On-site service'], id: 'fabrication' },
+    { image: '/img/Bore-Facing-Service-Home.jpg', title: 'Bore Facing', desc: 'Restore worn faces, flanges, and pivot points to OEM spec — ensuring smooth alignment and reduced wear.', features: ['Flange facing', 'Surface reconditioning', 'Precision alignment'], id: 'bore-facing' },
+    { image: '/img/Mechanical-Design-Service.jpg', title: 'Mechanical Design', desc: 'We design, build, and test custom tools, brackets, and jigs tailored for your site needs.', features: ['Custom tooling', 'Site-specific solutions', 'Full design service'], id: 'mechanical-design' },
+    { image: '/img/Acoustic-alignment.jpg', title: 'Bush & Bearing Installation', desc: 'Accurate on-site installation with acoustic alignment for longer-lasting machinery performance.', features: ['Precision installation', 'Acoustic alignment', 'Extended equipment life'], id: 'bush-bearing' },
+    { image: '/img/Breakdown-Repairs-Service-Home.jpg', title: 'Breakdown Repairs', desc: 'Rapid mobile repair for unexpected failures and scheduled servicing to keep your equipment running strong.', features: ['24/7 availability', 'Rapid response', 'Mobile repair unit'], id: 'breakdown' },
   ];
 
   return (
@@ -133,15 +196,19 @@ function ServicesOverview() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`card group cursor-pointer ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+              className={`card group cursor-pointer overflow-hidden ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
               style={{ animationDelay: `${index * 100 + 200}ms` }}
             >
+              {/* Service Image */}
+              <div className="relative h-52 overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </div>
               <div className="p-8">
-                <div className="relative w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-primary-100 group-hover:bg-accent transition-all duration-500">
-                  <div className="text-primary-600 group-hover:text-white transition-colors duration-500">
-                    {service.icon}
-                  </div>
-                </div>
                 <h3 className="text-xl font-bold text-secondary-900 mb-3 group-hover:text-primary-600 transition-colors">{service.title}</h3>
                 <p className="text-secondary-600 mb-4 leading-relaxed">{service.desc}</p>
                 <ul className="space-y-2 mb-6">
@@ -171,6 +238,7 @@ function ServicesOverview() {
   );
 }
 
+/* ── Why Choose Us ─────────────────────────────────── */
 function WhyChooseUs() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -190,43 +258,57 @@ function WhyChooseUs() {
   return (
     <section ref={ref} className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-          <span className="inline-block px-4 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">Why Choose Us</span>
-          <h2 className="section-heading mb-4">Why Partner with BHEL Engineering</h2>
-          <p className="section-subheading">Industry-leading expertise, mobile service, and precision results — delivered where you need them.</p>
-        </div>
+        <div className={`grid lg:grid-cols-2 gap-16 items-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          {/* Image Side */}
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src="/img/Why-Partner-with-BHEL-Engineering.jpg"
+              alt="Why Partner with BHEL Engineering"
+              className="w-full h-[500px] object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary-900/40 to-transparent" />
+          </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {reasons.map((reason, index) => (
-            <div
-              key={reason.title}
-              className={`group p-8 bg-secondary-50 rounded-2xl hover:bg-primary-700 transition-all duration-500 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <div className="flex items-start gap-5">
-                <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-primary-100 group-hover:bg-primary-600 flex items-center justify-center transition-colors duration-500">
-                  <div className="text-primary-600 group-hover:text-white transition-colors duration-500">{reason.icon}</div>
+          {/* Content Side */}
+          <div>
+            <span className="inline-block px-4 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">Why Choose Us</span>
+            <h2 className="section-heading mb-4">Why Partner with BHEL Engineering</h2>
+            <p className="section-subheading text-left mb-8">Industry-leading expertise, mobile service, and precision results — delivered where you need them.</p>
+
+            <div className="space-y-6">
+              {reasons.map((reason, index) => (
+                <div
+                  key={reason.title}
+                  className={`group p-6 bg-secondary-50 rounded-2xl hover:bg-primary-700 transition-all duration-500 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary-100 group-hover:bg-primary-600 flex items-center justify-center transition-colors duration-500">
+                      <div className="text-primary-600 group-hover:text-white transition-colors duration-500">{reason.icon}</div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-secondary-900 group-hover:text-white mb-2 transition-colors duration-500">{reason.title}</h3>
+                      <p className="text-secondary-600 group-hover:text-primary-100 text-sm leading-relaxed transition-colors duration-500">{reason.description}</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-secondary-900 group-hover:text-white mb-3 transition-colors duration-500">{reason.title}</h3>
-                  <p className="text-secondary-600 group-hover:text-primary-100 leading-relaxed transition-colors duration-500">{reason.description}</p>
-                </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div className="text-center mt-12">
-          <Link to="/about" className="btn-outline text-lg px-8 py-4">
-            Learn More About Us
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Link>
+            <div className="mt-8">
+              <Link to="/about" className="btn-outline text-lg px-8 py-4">
+                Learn More About Us
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
+/* ── Testimonials ─────────────────────────────────── */
 function Testimonials() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -278,6 +360,7 @@ function Testimonials() {
   );
 }
 
+/* ── Service Areas Preview ─────────────────────────────────── */
 function ServiceAreasPreview() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -319,7 +402,7 @@ function ServiceAreasPreview() {
 
         <div className={`text-center mt-12 ${isVisible ? 'animate-fade-in-up animation-delay-500' : 'opacity-0'}`}>
           <p className="text-secondary-600 mb-4">Need service outside these areas? Get in touch — we go where you need us.</p>
-          <Link to="/service-areas" className="btn-primary">
+          <Link to="/contact" className="btn-primary">
             View All Service Areas
             <ArrowRight className="w-5 h-5 ml-2" />
           </Link>
@@ -329,6 +412,7 @@ function ServiceAreasPreview() {
   );
 }
 
+/* ── CTA Banner ─────────────────────────────────── */
 function CTABanner() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -339,16 +423,20 @@ function CTABanner() {
   }, []);
 
   return (
-    <section ref={ref} className="py-20 bg-accent relative overflow-hidden">
+    <section ref={ref} className="relative py-20 overflow-hidden">
+      {/* Background Image */}
+      <img
+        src="/img/BHEL-Banner-2.jpg"
+        alt="BHEL Engineering CTA Background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-accent/90" />
+
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
       </div>
       <div className={`relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-        <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full mb-6">
-          <Wrench className="w-4 h-4 text-white" />
-          <span className="text-white text-sm font-medium">Ready to Get Started?</span>
-        </div>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
           Need On-Site Machining Today?
         </h2>
@@ -375,6 +463,7 @@ export default function HomePage() {
     <>
       <title>Home – BHEL Engineering | On-Site Machining Perth WA</title>
       <Hero />
+      <MiddleBanner />
       <ServicesOverview />
       <WhyChooseUs />
       <Testimonials />

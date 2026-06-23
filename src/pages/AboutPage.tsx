@@ -8,10 +8,14 @@ import {
 function PageHero() {
   return (
     <section className="relative pt-32 pb-20 hero-gradient overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="/img/About-us-side-banner.jpg"
+          alt="About BHEL Engineering"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-900/95 via-primary-900/80 to-primary-900/40" />
       </div>
       <div className="absolute top-10 right-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,41 +59,51 @@ function OurStory() {
     <section ref={ref} className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`grid lg:grid-cols-2 gap-16 items-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-          <div>
-            <span className="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-6">Our Story</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">
-              Two Decades of <span className="text-primary-600">Engineering Excellence</span>
-            </h2>
-            <div className="space-y-5 text-secondary-600 leading-relaxed">
-              <p>
-                BHEL Engineering was founded with a simple but powerful vision: to bring high-quality, precision on-site machining directly to the clients who need it most — in the mines, on construction sites, and in industrial facilities across Western Australia.
-              </p>
-              <p>
-                Over more than two decades, we've built a reputation for technical excellence, reliability, and a genuine commitment to minimising our clients' downtime. Our team understands that every hour of machine downtime costs money, and we work with urgency and precision to get your equipment back in operation.
-              </p>
-              <p>
-                From our earliest line boring work in Perth's metro region, we've expanded our capabilities and service area to cover the entire state — from the Goldfields and Pilbara to the remote Kimberley region. Wherever you are in WA, BHEL Engineering can come to you.
-              </p>
-              <p>
-                Today, BHEL Engineering is trusted by some of Western Australia's leading mining and construction companies as their go-to on-site machining partner. Our team brings the same care, precision, and professionalism to every job — from a single bush replacement to a major crusher rebuild.
-              </p>
-            </div>
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full min-h-[400px]">
+            <img
+              src="/img/2-1.jpg"
+              alt="BHEL Engineering Team at Work"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary-900/40 to-transparent" />
           </div>
-          <div className="grid grid-cols-2 gap-6">
-            {[
-              { icon: <Wrench className="w-8 h-8 text-white" />, title: 'Founded on Expertise', desc: 'Over 20 years of hands-on experience in WA\'s toughest industrial environments', color: 'bg-primary-700' },
-              { icon: <Target className="w-8 h-8 text-white" />, title: 'OEM Precision', desc: 'Every repair meets or exceeds original manufacturer specifications', color: 'bg-accent' },
-              { icon: <Truck className="w-8 h-8 text-white" />, title: 'Fully Mobile', desc: 'We bring the workshop to your site — anywhere in Western Australia', color: 'bg-primary-600' },
-              { icon: <Heart className="w-8 h-8 text-white" />, title: 'Client-Focused', desc: 'Your operational uptime is our priority — 24/7 emergency response available', color: 'bg-secondary-700' },
-            ].map((item) => (
-              <div key={item.title} className="bg-secondary-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-                <div className={`w-14 h-14 ${item.color} rounded-xl flex items-center justify-center mb-4`}>
-                  {item.icon}
-                </div>
-                <h3 className="font-bold text-secondary-900 mb-2">{item.title}</h3>
-                <p className="text-secondary-500 text-sm leading-relaxed">{item.desc}</p>
+          <div className="space-y-12">
+            <div>
+              <span className="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-6">Our Story</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">
+                Two Decades of <span className="text-primary-600">Engineering Excellence</span>
+              </h2>
+              <div className="space-y-5 text-secondary-600 leading-relaxed">
+                <p>
+                  BHEL Engineering was founded with a simple but powerful vision: to bring high-quality, precision on-site machining directly to the clients who need it most — in the mines, on construction sites, and in industrial facilities across Western Australia.
+                </p>
+                <p>
+                  Over more than two decades, we've built a reputation for technical excellence, reliability, and a genuine commitment to minimising our clients' downtime. Our team understands that every hour of machine downtime costs money, and we work with urgency and precision to get your equipment back in operation.
+                </p>
+                <p>
+                  From our earliest line boring work in Perth's metro region, we've expanded our capabilities and service area to cover the entire state — from the Goldfields and Pilbara to the remote Kimberley region. Wherever you are in WA, BHEL Engineering can come to you.
+                </p>
+                <p>
+                  Today, BHEL Engineering is trusted by some of Western Australia's leading mining and construction companies as their go-to on-site machining partner. Our team brings the same care, precision, and professionalism to every job — from a single bush replacement to a major crusher rebuild.
+                </p>
               </div>
-            ))}
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+              {[
+                { icon: <Wrench className="w-8 h-8 text-white" />, title: 'Founded on Expertise', desc: 'Over 20 years of hands-on experience in WA\'s toughest industrial environments', color: 'bg-primary-700' },
+                { icon: <Target className="w-8 h-8 text-white" />, title: 'OEM Precision', desc: 'Every repair meets or exceeds original manufacturer specifications', color: 'bg-accent' },
+                { icon: <Truck className="w-8 h-8 text-white" />, title: 'Fully Mobile', desc: 'We bring the workshop to your site — anywhere in Western Australia', color: 'bg-primary-600' },
+                { icon: <Heart className="w-8 h-8 text-white" />, title: 'Client-Focused', desc: 'Your operational uptime is our priority — 24/7 emergency response available', color: 'bg-secondary-700' },
+              ].map((item) => (
+                <div key={item.title} className="bg-secondary-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                  <div className={`w-14 h-14 ${item.color} rounded-xl flex items-center justify-center mb-4`}>
+                    {item.icon}
+                  </div>
+                  <h3 className="font-bold text-secondary-900 mb-2">{item.title}</h3>
+                  <p className="text-secondary-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

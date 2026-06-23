@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Wrench, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   const services = [
@@ -28,14 +28,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-primary-600 rounded-lg">
-                <Wrench className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <span className="text-xl font-bold">BHEL</span>
-                <span className="block text-xs text-secondary-400">Engineering</span>
-              </div>
+            <div className="mb-6">
+              <img
+                src="/img/BHEL-Engineering-Onsite-Line-Boring-Logo.png"
+                alt="BHEL Engineering"
+                className="h-12 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-secondary-400 mb-6 leading-relaxed">
               Precision on-site machining solutions for mining, construction, and industrial equipment across Western Australia.
