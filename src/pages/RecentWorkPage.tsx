@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Settings, Target, Flame, Wrench, AlertTriangle, ArrowRight, Phone, CheckCircle } from 'lucide-react';
+import { Settings, Target, Wrench, AlertTriangle, ArrowRight, Phone, CheckCircle } from 'lucide-react';
 
 const projects = [
   {
@@ -90,7 +89,7 @@ function ProjectList() {
     <section className="py-24 bg-secondary-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-16">
-          {projects.map((project, index) => {
+          {projects.map((project) => {
             return (
               <div 
                 key={project.id} 

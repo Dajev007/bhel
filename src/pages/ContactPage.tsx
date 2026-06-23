@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, CheckCircle, Send, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, CheckCircle, Send } from 'lucide-react';
 
 function PageHero() {
   return (

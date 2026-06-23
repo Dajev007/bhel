@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, User, Clock, ChevronRight } from 'lucide-react';
 
 const blogPosts = [
