@@ -28,11 +28,11 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <div className="mb-6">
+            <div className="mb-6 inline-flex items-center rounded-2xl bg-white/10 p-3">
               <img
                 src="/img/BHEL-Engineering-Onsite-Line-Boring-Logo.png"
                 alt="BHEL Engineering"
-                className="h-12 w-auto brightness-0 invert"
+                className="h-12 w-auto object-contain"
               />
             </div>
             <p className="text-secondary-400 mb-6 leading-relaxed">
