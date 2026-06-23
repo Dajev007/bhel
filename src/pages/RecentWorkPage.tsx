@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Settings, Target, Wrench, AlertTriangle, ArrowRight, Phone, CheckCircle } from 'lucide-react';
+import { Settings, Target, Wrench, AlertTriangle, ArrowRight, Phone, CheckCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const projects = [
   {
@@ -143,6 +144,148 @@ function ProjectList() {
   );
 }
 
+function ProjectGallery() {
+  const categories = ['All', 'Line Boring', 'Welding & Fabrication', 'Bore Facing & Alignment'];
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const galleryImages = [
+    { src: '/img/1.jpg', category: 'Line Boring', title: 'On-site Line Boring' },
+    { src: '/img/2.jpg', category: 'Line Boring', title: 'Precision Boring Setup' },
+    { src: '/img/3.jpg', category: 'Welding & Fabrication', title: 'Heavy Component Welding' },
+    { src: '/img/4.jpg', category: 'Bore Facing & Alignment', title: 'Flange Bore Facing' },
+    { src: '/img/5.jpg', category: 'Line Boring', title: 'Mobile Machining Setup' },
+    { src: '/img/6.jpg', category: 'Welding & Fabrication', title: 'Certified Structural Welding' },
+    { src: '/img/7.jpg', category: 'Bore Facing & Alignment', title: 'Alignment Inspection' },
+    { src: '/img/8.jpg', category: 'Welding & Fabrication', title: 'Component Hard-facing' },
+    { src: '/img/9.jpg', category: 'Bore Facing & Alignment', title: 'Precision Alignment' },
+    { src: '/img/10.jpg', category: 'Line Boring', title: 'Completed Bore Restoration' },
+    { src: '/img/11.jpg', category: 'Welding & Fabrication', title: 'Lifting Jig Fabrication' },
+    { src: '/img/12.jpg', category: 'Bore Facing & Alignment', title: 'On-site Flange Reconditioning' },
+    { src: '/img/13.jpg', category: 'Line Boring', title: 'Hofmann Triangle Boring' },
+    { src: '/img/14.jpg', category: 'Welding & Fabrication', title: 'On-site Bucket Welds' },
+    { src: '/img/15.jpg', category: 'Bore Facing & Alignment', title: 'Final Face Inspection' }
+  ];
+
+  const filteredImages = activeCategory === 'All' 
+    ? galleryImages 
+    : galleryImages.filter(img => img.category === activeCategory);
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (lightboxIndex !== null) {
+      setLightboxIndex((lightboxIndex + 1) % filteredImages.length);
+    }
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (lightboxIndex !== null) {
+      setLightboxIndex((lightboxIndex - 1 + filteredImages.length) % filteredImages.length);
+    }
+  };
+
+  return (
+    <section className="py-24 bg-white border-t border-secondary-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">Gallery</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">On-Site Project Gallery</h2>
+          <p className="text-lg text-secondary-600 max-w-2xl mx-auto">Take a visual tour of our mobile line boring, welding, and facing operations in the field.</p>
+        </div>
+
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => {
+                setActiveCategory(cat);
+                setLightboxIndex(null);
+              }}
+              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                activeCategory === cat
+                  ? 'bg-primary-700 text-white shadow-lg'
+                  : 'bg-secondary-100 text-secondary-600 hover:bg-secondary-200'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Image Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredImages.map((img, index) => (
+            <div
+              key={img.src}
+              onClick={() => setLightboxIndex(index)}
+              className="group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-500"
+            >
+              <img
+                src={img.src}
+                alt={img.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-950/80 via-primary-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <span className="text-accent text-xs font-bold uppercase tracking-wider block mb-1">{img.category}</span>
+                <h4 className="text-white text-lg font-bold">{img.title}</h4>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Lightbox Modal */}
+      {lightboxIndex !== null && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setLightboxIndex(null)}
+        >
+          <button 
+            onClick={() => setLightboxIndex(null)}
+            className="absolute top-6 right-6 text-white/70 hover:text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+          >
+            <X className="w-8 h-8" />
+          </button>
+
+          <button 
+            onClick={handlePrev}
+            className="absolute left-6 text-white/70 hover:text-white p-3 hover:bg-white/10 rounded-full transition-colors"
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+
+          <div className="max-w-4xl max-h-[80vh] flex flex-col items-center">
+            <img
+              src={filteredImages[lightboxIndex].src}
+              alt={filteredImages[lightboxIndex].title}
+              className="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl"
+            />
+            <div className="text-center mt-4">
+              <span className="text-accent text-xs font-bold uppercase tracking-wider block mb-1">
+                {filteredImages[lightboxIndex].category}
+              </span>
+              <h4 className="text-white text-xl font-bold">
+                {filteredImages[lightboxIndex].title}
+              </h4>
+            </div>
+          </div>
+
+          <button 
+            onClick={handleNext}
+            className="absolute right-6 text-white/70 hover:text-white p-3 hover:bg-white/10 rounded-full transition-colors"
+          >
+            <ChevronRight className="w-8 h-8" />
+          </button>
+        </div>
+      )}
+    </section>
+  );
+}
+
 function CTASection() {
   return (
     <section className="py-20 bg-white border-t border-secondary-100">
@@ -164,6 +307,7 @@ export default function RecentWorkPage() {
       <title>Recent Work – BHEL Engineering | Projects Portfolio</title>
       <PageHero />
       <ProjectList />
+      <ProjectGallery />
       <CTASection />
     </>
   );

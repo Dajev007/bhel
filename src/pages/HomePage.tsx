@@ -12,8 +12,8 @@ function Hero() {
 
   const bannerImages = [
     '/img/custom_hero_banner.png',
-    '/img/BHEL-WEB-BNR-scaled.jpg',
-    '/img/Banner-with-Mobile-1.jpg',
+    '/img/homepage_hero_slide2.png',
+    '/img/recent_work_hero_banner.png',
   ];
 
   useEffect(() => {

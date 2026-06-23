@@ -11,7 +11,7 @@ function PageHero() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/img/About-us-side-banner.jpg"
+          src="/img/services_hero_banner.png"
           alt="About BHEL Engineering"
           className="w-full h-full object-cover"
         />
