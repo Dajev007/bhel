@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Settings, Target, Wrench, AlertTriangle, ArrowRight, Phone, CheckCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Settings, Target, Wrench, AlertTriangle, ArrowRight, Phone, CheckCircle, X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 
 const projects = [
   {
@@ -295,6 +295,123 @@ function ProjectGallery() {
   );
 }
 
+function VideoShowcase() {
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+
+  const videos = [
+    { id: 'D5RSkphQa7o', title: 'On-Site Line Boring Operation', type: 'standard' },
+    { id: 'IWOpxxG0u9A', title: 'Mobile Machining in Action', type: 'standard' },
+    { id: 'RSB58Uk-nL4', title: 'Precision Bore Facing', type: 'standard' },
+    { id: 'k_isRU3Wfj4', title: 'Heavy Equipment Repair', type: 'standard' },
+    { id: 'zdHRUyu0gB0', title: 'Field Welding & Fabrication', type: 'standard' },
+    { id: '-YuVk87PEhY', title: 'Bush & Bearing Installation', type: 'standard' },
+    { id: 'ecAQEENnd7s', title: 'Acoustic Alignment Process', type: 'standard' },
+    { id: 'cq5ZDlu73hU', title: 'Quick Line Boring Demo', type: 'short' },
+    { id: 'oNk_PMVa7pQ', title: 'Bore Welding Highlight', type: 'short' },
+  ];
+
+  const standardVideos = videos.filter(v => v.type === 'standard');
+  const shortVideos = videos.filter(v => v.type === 'short');
+
+  return (
+    <section className="py-24 bg-secondary-50 border-t border-secondary-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1 bg-red-500/10 text-red-500 rounded-full text-sm font-medium mb-4">
+            <Play className="w-4 h-4 inline-block mr-1 -mt-0.5" /> Video Showcase
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">Watch Us in Action</h2>
+          <p className="text-lg text-secondary-600 max-w-2xl mx-auto">
+            See our team performing precision on-site machining, welding, and alignment across Western Australia.
+          </p>
+        </div>
+
+        {/* Featured Video (first one large) */}
+        <div className="mb-10">
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black">
+            <iframe
+              src={`https://www.youtube.com/embed/${activeVideo || standardVideos[0].id}?rel=0`}
+              title={standardVideos.find(v => v.id === (activeVideo || standardVideos[0].id))?.title || 'BHEL Engineering Video'}
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <p className="text-center text-secondary-600 mt-4 font-medium text-lg">
+            {standardVideos.find(v => v.id === (activeVideo || standardVideos[0].id))?.title || standardVideos[0].title}
+          </p>
+        </div>
+
+        {/* Standard Video Thumbnails */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+          {standardVideos.map((video) => (
+            <button
+              key={video.id}
+              onClick={() => setActiveVideo(video.id)}
+              className={`group relative aspect-video rounded-xl overflow-hidden shadow-md transition-all duration-300 ${
+                (activeVideo || standardVideos[0].id) === video.id
+                  ? 'ring-4 ring-accent shadow-xl scale-[1.02]'
+                  : 'hover:shadow-lg hover:scale-[1.02]'
+              }`}
+            >
+              <img
+                src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
+                alt={video.title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
+                (activeVideo || standardVideos[0].id) === video.id
+                  ? 'bg-accent/30'
+                  : 'bg-black/30 group-hover:bg-black/50'
+              }`}>
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+                  (activeVideo || standardVideos[0].id) === video.id
+                    ? 'bg-accent text-white scale-110'
+                    : 'bg-white/90 text-primary-800 group-hover:bg-white group-hover:scale-110'
+                }`}>
+                  <Play className="w-5 h-5 ml-0.5" fill="currentColor" />
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
+                <p className="text-white text-xs font-medium truncate">{video.title}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* Shorts Section */}
+        <div className="mt-16">
+          <h3 className="text-2xl font-bold text-secondary-900 mb-8 text-center">
+            Quick Highlights
+          </h3>
+          <div className="flex flex-wrap justify-center gap-6">
+            {shortVideos.map((video) => (
+              <div
+                key={video.id}
+                className="w-[280px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 bg-black"
+              >
+                <div className="relative" style={{ paddingBottom: '177.78%' }}>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.id}?rel=0`}
+                    title={video.title}
+                    className="absolute inset-0 w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="p-3 bg-secondary-900">
+                  <p className="text-white text-sm font-medium text-center">{video.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CTASection() {
   return (
     <section className="py-20 bg-white border-t border-secondary-100">
@@ -316,6 +433,7 @@ export default function RecentWorkPage() {
       <title>Recent Work – BHEL Engineering | Projects Portfolio</title>
       <PageHero />
       <ProjectList />
+      <VideoShowcase />
       <ProjectGallery />
       <CTASection />
     </>
