@@ -11,7 +11,7 @@ function Hero() {
   useEffect(() => { setIsVisible(true); }, []);
 
   const bannerImages = [
-    '/img/Banner-PC-Fully-mobile-Updated-scaled.jpg',
+    '/img/custom_hero_banner.png',
     '/img/BHEL-WEB-BNR-scaled.jpg',
     '/img/Banner-with-Mobile-1.jpg',
   ];
