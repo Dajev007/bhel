@@ -36,14 +36,23 @@ function FeaturedPost() {
     <section className="pt-24 pb-12 bg-secondary-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link to={`/blogs/${post.id}`} className="block bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row group hover:shadow-2xl transition-all duration-500">
-          <div className={`lg:w-1/2 p-12 flex flex-col justify-center relative overflow-hidden ${post.color}`}>
-            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent mix-blend-overlay"></div>
-            <span className="relative z-10 inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-bold tracking-wide uppercase mb-6 self-start backdrop-blur-sm">
-              Featured Insight
-            </span>
-            <h2 className="relative z-10 text-3xl md:text-4xl font-bold text-white mb-6 leading-tight group-hover:-translate-y-1 transition-transform duration-300">
-              {post.title}
-            </h2>
+          <div className="lg:w-1/2 relative min-h-[300px] overflow-hidden">
+            <img
+              src={post.image}
+              alt={post.title}
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary-950/80 to-transparent" />
+            <div className="absolute top-6 left-6 z-10">
+              <span className="inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-bold tracking-wide uppercase backdrop-blur-sm">
+                Featured Insight
+              </span>
+            </div>
+            <div className="absolute bottom-6 left-6 right-6 z-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+                {post.title}
+              </h2>
+            </div>
           </div>
           <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
             <div className="flex items-center gap-4 text-sm text-secondary-500 mb-6 font-medium">
@@ -86,8 +95,13 @@ function BlogGrid() {
                 className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-500 animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className={`h-48 ${post.color} relative overflow-hidden flex items-end p-6`}>
-                  <div className="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]"></div>
+                <div className="h-48 relative overflow-hidden flex items-end p-6">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <span className="relative z-10 inline-block px-3 py-1 bg-white/20 text-white rounded-full text-xs font-bold tracking-wide uppercase backdrop-blur-sm">
                     {post.category}
                   </span>

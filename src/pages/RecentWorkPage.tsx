@@ -10,6 +10,7 @@ const projects = [
     service: 'Mobile Line Boring',
     icon: <Settings className="w-8 h-8 text-white" />,
     color: 'bg-primary-700',
+    image: '/img/crusher_bore_repair.png',
     description: 'Emergency response to a major iron ore site where a primary crusher mainframe suffered severe bore wear. We mobilized within 24 hours with our Hofmann Triangle equipment.',
     results: [
       'Bore diameter 450mm restored to exact OEM specification.',
@@ -24,6 +25,7 @@ const projects = [
     service: 'Bore Welding & Facing',
     icon: <Target className="w-8 h-8 text-white" />,
     color: 'bg-accent',
+    image: '/img/excavator_stick_repair.png',
     description: 'A 300-tonne excavator experienced catastrophic failure of the stick pin. BHEL was called in to perform on-site bore welding followed by precision line boring and face restoration.',
     results: [
       'Fully mobile repair completed at the active mine face.',
@@ -38,6 +40,7 @@ const projects = [
     service: 'Mechanical Design & Fabrication',
     icon: <Wrench className="w-8 h-8 text-white" />,
     color: 'bg-purple-600',
+    image: '/img/lifting_jigs_fabrication.png',
     description: 'A construction client required specialized lifting jigs for a unique architectural steel installation. We designed, tested, and fabricated the required components.',
     results: [
       'Engineered from scratch based on structural requirements.',
@@ -52,6 +55,7 @@ const projects = [
     service: 'Bush & Bearing Installation',
     icon: <AlertTriangle className="w-8 h-8 text-white" />,
     color: 'bg-orange-600',
+    image: '/img/truck_bush_replacement.png',
     description: 'Planned maintenance shutdown requiring the replacement of all suspension bushes on a fleet of CAT 793 haul trucks using acoustic alignment.',
     results: [
       'Completed 12 trucks within the tight 7-day shutdown window.',
@@ -98,11 +102,16 @@ function ProjectList() {
             return (
               <div 
                 key={project.id} 
-                className="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col lg:flex-row transition-all duration-700"
+                className="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col lg:flex-row transition-all duration-700 group"
               >
                 {/* Visual Block */}
-                <div className={`lg:w-2/5 p-12 flex flex-col justify-center items-center text-center ${project.color} relative overflow-hidden`}>
-                  <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
+                <div className="lg:w-2/5 relative min-h-[300px] flex flex-col justify-center items-center text-center p-12 overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-950/90 via-primary-950/75 to-primary-950/40" />
                   <div className="relative z-10">
                     <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-inner">
                       {project.icon}

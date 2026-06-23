@@ -12,6 +12,7 @@ const services = [
     title: 'Mobile Line Boring',
     tagline: 'On-site precision boring — no dismantling required.',
     description: 'BHEL Engineering offers professional mobile line boring services across Perth and all of Western Australia. Using our state-of-the-art Hofmann Triangle portable line boring equipment, we restore worn or damaged bores to precise OEM specifications — directly on your site.',
+    image: '/img/Mobile-Line-Boring-Service.jpg',
     details: [
       'We service bores from 38mm up to 500mm+ in diameter',
       'No need to dismantle or transport heavy machinery',
@@ -30,6 +31,7 @@ const services = [
     title: 'Light Fabrication & Welding',
     tagline: 'Custom metalwork and welding — built to your exact spec.',
     description: "BHEL Engineering provides professional light fabrication and welding services for mining, construction, and industrial clients across Western Australia. Our qualified welders and fabricators deliver high-quality results — on-site or at your facility.",
+    image: '/img/Light-Fabrication-Welding-Home.jpg',
     details: [
       'MIG, TIG, and Stick welding capabilities',
       'Custom sheet metal work and structural fabrication',
@@ -48,6 +50,7 @@ const services = [
     title: 'Bore Facing',
     tagline: 'Restore worn flanges and pivot faces to OEM tolerances.',
     description: 'Our bore facing service restores the mating faces, flanges, and pivot points of heavy machinery components to OEM specification. Using portable facing equipment, we can perform this work directly on-site — minimising downtime and avoiding costly part replacement.',
+    image: '/img/Bore-Facing-Service-Home.jpg',
     details: [
       'Restores worn, pitted, or damaged faces to flat and square',
       'Ensures correct seating for bushes, seals, and bearings',
@@ -66,6 +69,7 @@ const services = [
     title: 'Mechanical Design',
     tagline: 'Custom-engineered tooling and components for your site.',
     description: "When standard solutions don't fit, BHEL Engineering designs, manufactures, and tests custom mechanical components, tools, and jigs tailored to your specific operational needs. From concept to completion, our engineering team ensures every solution is practical, safe, and effective.",
+    image: '/img/Mechanical-Design-Service.jpg',
     details: [
       'Custom tool and jig design for specific tasks',
       'Bracket, mount, and adapter fabrication',
@@ -84,6 +88,7 @@ const services = [
     title: 'Bush & Bearing Installation',
     tagline: 'Precise installation with acoustic alignment for longer life.',
     description: 'Proper bush and bearing installation is critical for equipment longevity and performance. BHEL Engineering provides professional on-site installation services using precision tooling and acoustic alignment techniques — ensuring every component is seated correctly and aligned perfectly.',
+    image: '/img/Acoustic-alignment.jpg',
     details: [
       'On-site press-fit bush installation with purpose-built tooling',
       'Acoustic alignment techniques for precision fit',
@@ -102,6 +107,7 @@ const services = [
     title: 'Breakdown Repairs',
     tagline: '24/7 emergency response to keep your operation moving.',
     description: 'When machinery fails, every minute of downtime costs money. BHEL Engineering offers rapid 24/7 breakdown repair services across Perth and regional WA. Our mobile units are fully equipped to diagnose and repair on-site — getting your equipment back in operation as quickly as possible.',
+    image: '/img/Breakdown-Repairs-Service-Home.jpg',
     details: [
       '24/7 emergency availability for critical breakdowns',
       'Rapid mobilisation to site — Perth metro and regional WA',
@@ -214,6 +220,16 @@ function ServiceDetail({ service, index }: { service: typeof services[0]; index:
 
           {/* Cards */}
           <div className={isEven ? 'order-2' : 'order-2 lg:order-1'}>
+            {/* Service Image */}
+            <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden shadow-lg mb-8 group">
+              <img
+                src={service.image}
+                alt={service.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            </div>
+
             {/* Specs */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               {service.specs.map((spec) => (
