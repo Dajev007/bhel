@@ -8,7 +8,7 @@ import {
 const services = [
   {
     id: 'line-boring',
-    icon: <Settings className="w-12 h-12" />,
+    icon: <Settings className="w-8 h-8" />,
     title: 'Mobile Line Boring',
     tagline: 'On-site precision boring — no dismantling required.',
     description: 'BHEL Engineering offers professional mobile line boring services across Perth and all of Western Australia. Using our state-of-the-art Hofmann Triangle portable line boring equipment, we restore worn or damaged bores to precise OEM specifications — directly on your site.',
@@ -27,7 +27,7 @@ const services = [
   },
   {
     id: 'fabrication',
-    icon: <Flame className="w-12 h-12" />,
+    icon: <Flame className="w-8 h-8" />,
     title: 'Light Fabrication & Welding',
     tagline: 'Custom metalwork and welding — built to your exact spec.',
     description: "BHEL Engineering provides professional light fabrication and welding services for mining, construction, and industrial clients across Western Australia. Our qualified welders and fabricators deliver high-quality results — on-site or at your facility.",
@@ -46,7 +46,7 @@ const services = [
   },
   {
     id: 'bore-facing',
-    icon: <Target className="w-12 h-12" />,
+    icon: <Target className="w-8 h-8" />,
     title: 'Bore Facing',
     tagline: 'Restore worn flanges and pivot faces to OEM tolerances.',
     description: 'Our bore facing service restores the mating faces, flanges, and pivot points of heavy machinery components to OEM specification. Using portable facing equipment, we can perform this work directly on-site — minimising downtime and avoiding costly part replacement.',
@@ -65,7 +65,7 @@ const services = [
   },
   {
     id: 'mechanical-design',
-    icon: <Cog className="w-12 h-12" />,
+    icon: <Cog className="w-8 h-8" />,
     title: 'Mechanical Design',
     tagline: 'Custom-engineered tooling and components for your site.',
     description: "When standard solutions don't fit, BHEL Engineering designs, manufactures, and tests custom mechanical components, tools, and jigs tailored to your specific operational needs. From concept to completion, our engineering team ensures every solution is practical, safe, and effective.",
@@ -84,7 +84,7 @@ const services = [
   },
   {
     id: 'bush-bearing',
-    icon: <CircleDot className="w-12 h-12" />,
+    icon: <CircleDot className="w-8 h-8" />,
     title: 'Bush & Bearing Installation',
     tagline: 'Precise installation with acoustic alignment for longer life.',
     description: 'Proper bush and bearing installation is critical for equipment longevity and performance. BHEL Engineering provides professional on-site installation services using precision tooling and acoustic alignment techniques — ensuring every component is seated correctly and aligned perfectly.',
@@ -103,7 +103,7 @@ const services = [
   },
   {
     id: 'breakdown',
-    icon: <AlertTriangle className="w-12 h-12" />,
+    icon: <AlertTriangle className="w-8 h-8" />,
     title: 'Breakdown Repairs',
     tagline: '24/7 emergency response to keep your operation moving.',
     description: 'When machinery fails, every minute of downtime costs money. BHEL Engineering offers rapid 24/7 breakdown repair services across Perth and regional WA. Our mobile units are fully equipped to diagnose and repair on-site — getting your equipment back in operation as quickly as possible.',
@@ -196,10 +196,12 @@ function ServiceDetail({ service, index }: { service: typeof services[0]; index:
         <div className={`grid lg:grid-cols-2 gap-16 items-start ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           {/* Content */}
           <div className={isEven ? 'order-1' : 'order-1 lg:order-2'}>
-            <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br ${service.color} text-white mb-6 shadow-lg`}>
-              {service.icon}
+            <div className="flex items-center gap-4 mb-6">
+              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br ${service.color} text-white shadow-lg`}>
+                {service.icon}
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary-900">{service.title}</h2>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-3">{service.title}</h2>
             <p className="text-accent font-semibold text-lg mb-4">{service.tagline}</p>
             <p className="text-secondary-600 leading-relaxed mb-8 text-lg">{service.description}</p>
 
