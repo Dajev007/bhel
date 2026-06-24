@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   Settings, Flame, Target, Cog, CircleDot, AlertTriangle,
   CheckCircle, ArrowRight, Phone, Gauge, Truck, Clock, Shield,
@@ -294,6 +294,22 @@ function CapabilitiesBanner() {
 }
 
 export default function ServicesPage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        // slight timeout to ensure DOM is rendered, then scroll with offset for sticky nav
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // adjust for sticky header/navigation height
+          window.scrollBy(0, -80);
+        }, 60);
+      }
+    }
+  }, [location]);
   return (
     <>
       <title>Services – BHEL Engineering | Mobile Line Boring Perth WA</title>
