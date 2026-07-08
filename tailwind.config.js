@@ -37,7 +37,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Cormorant Garamond"', 'serif'],
+        display: ['"Playfair Display"', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',

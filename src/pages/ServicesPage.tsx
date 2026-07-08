@@ -159,7 +159,7 @@ function PageHero() {
   );
 }
 
-function ServiceNav() {
+function ServiceNav({ activeSection }: { activeSection: string }) {
   return (
     <section className="sticky top-20 z-40 bg-white border-b border-secondary-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -168,7 +168,19 @@ function ServiceNav() {
             <a
               key={s.id}
               href={`#${s.id}`}
-              className="flex-shrink-0 px-4 py-2 text-sm font-medium text-secondary-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors whitespace-nowrap"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById(s.id);
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                  window.history.pushState(null, '', `#${s.id}`);
+                }
+              }}
+              className={`flex-shrink-0 px-4 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${
+                activeSection === s.id
+                  ? 'bg-primary-600 text-white shadow-sm'
+                  : 'text-secondary-600 hover:text-primary-600 hover:bg-primary-50'
+              }`}
             >
               {s.title}
             </a>
@@ -191,7 +203,7 @@ function ServiceDetail({ service, index }: { service: typeof services[0]; index:
   const isEven = index % 2 === 0;
 
   return (
-    <section id={service.id} ref={ref} className={`py-24 ${isEven ? 'bg-white' : 'bg-secondary-50'}`}>
+    <section id={service.id} ref={ref} className={`scroll-mt-[140px] py-24 ${isEven ? 'bg-white' : 'bg-secondary-50'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`grid lg:grid-cols-2 gap-16 items-start ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           {/* Content */}
@@ -297,26 +309,34 @@ function CapabilitiesBanner() {
 
 export default function ServicesPage() {
   const location = useLocation();
+  const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) {
-        // slight timeout to ensure DOM is rendered, then scroll with offset for sticky nav
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // adjust for sticky header/navigation height
-          window.scrollBy(0, -80);
-        }, 60);
-      }
-    }
-  }, [location]);
+    // Scroll spy for updating active section in navigation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px' } // Triggers when element is somewhat near the top
+    );
+
+    services.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <title>Services – BHEL Engineering | Mobile Line Boring Perth WA</title>
       <PageHero />
-      <ServiceNav />
+      <ServiceNav activeSection={activeSection} />
       {services.map((service, index) => (
         <ServiceDetail key={service.id} service={service} index={index} />
       ))}
