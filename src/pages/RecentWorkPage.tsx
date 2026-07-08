@@ -1,25 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Settings, Target, Wrench, AlertTriangle, ArrowRight, Phone, CheckCircle, X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { Target, Wrench, AlertTriangle, ArrowRight, Phone, CheckCircle, X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 
 const projects = [
   {
     id: 1,
-    title: 'Crusher Mainframe Bore Restoration',
-    location: 'Pilbara Region, WA',
-    service: 'Mobile Line Boring',
-    icon: <Settings className="w-8 h-8 text-white" />,
-    color: 'bg-primary-700',
-    image: '/img/crusher_bore_repair.png',
-    description: 'Emergency response to a major iron ore site where a primary crusher mainframe suffered severe bore wear. We mobilized within 24 hours with our Hofmann Triangle equipment.',
-    results: [
-      'Bore diameter 450mm restored to exact OEM specification.',
-      'Saved the client an estimated $120,000 in transport and downtime costs.',
-      'Completed over a 48-hour continuous shift to minimize operational impact.',
-    ],
-  },
-  {
-    id: 2,
     title: 'Excavator Bucket Stick Pin Repair',
     location: 'Kalgoorlie, WA',
     service: 'Bore Welding & Facing',
@@ -34,7 +19,7 @@ const projects = [
     ],
   },
   {
-    id: 3,
+    id: 2,
     title: 'Custom Lifting Jigs Fabrication',
     location: 'Perth Metro, WA',
     service: 'Mechanical Design & Fabrication',
@@ -49,7 +34,7 @@ const projects = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     title: 'Haul Truck Suspension Bush Replacement',
     location: 'Newman, WA',
     service: 'Bush & Bearing Installation',
