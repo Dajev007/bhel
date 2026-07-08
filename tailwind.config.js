@@ -37,7 +37,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Cormorant Garamond"', 'serif'],
+        sans: ['"Rajdhani"', 'system-ui', 'sans-serif'],
         display: ['"Playfair Display"', 'serif'],
       },
       animation: {
