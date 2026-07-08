@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   Settings, Flame, Target, Cog, CircleDot, AlertTriangle,
   CheckCircle, ArrowRight, Phone, Gauge, Truck, Clock, Shield,
@@ -88,7 +88,7 @@ const services = [
     title: 'Bush & Bearing Installation',
     tagline: 'Precise installation with acoustic alignment for longer life.',
     description: 'Proper bush and bearing installation is critical for equipment longevity and performance. BHEL Engineering provides professional on-site installation services using precision tooling and acoustic alignment techniques — ensuring every component is seated correctly and aligned perfectly.',
-    image: '/img/Acoustic-alignment.jpg',
+    image: '/img/Bush-Bearing-Installation-New.png',
     details: [
       'On-site press-fit bush installation with purpose-built tooling',
       'Acoustic alignment techniques for precision fit',
@@ -309,6 +309,19 @@ function CapabilitiesBanner() {
 
 export default function ServicesPage() {
   const [activeSection, setActiveSection] = useState<string>('');
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location.hash]);
 
   useEffect(() => {
     // Scroll spy for updating active section in navigation

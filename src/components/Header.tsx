@@ -16,8 +16,10 @@ export default function Header() {
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
 
   const isHome = location.pathname === '/';
   const transparent = isHome && !isScrolled;
