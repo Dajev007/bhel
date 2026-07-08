@@ -65,11 +65,28 @@ function ContactSection() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormState({ name: '', email: '', phone: '', service: '', location: '', message: '', urgency: 'standard' });
-    setTimeout(() => setIsSubmitted(false), 8000);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      setIsSubmitted(true);
+      setFormState({ name: '', email: '', phone: '', service: '', location: '', message: '', urgency: 'standard' });
+      setTimeout(() => setIsSubmitted(false), 8000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was a problem submitting your message. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
