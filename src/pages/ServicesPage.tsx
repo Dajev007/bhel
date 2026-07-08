@@ -124,7 +124,7 @@ const services = [
 
 function PageHero() {
   return (
-    <section className="relative pt-32 pb-20 bg-primary-900 overflow-hidden">
+    <section className="relative pt-16 pb-20 bg-primary-900 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -161,7 +161,7 @@ function PageHero() {
 
 function ServiceNav({ activeSection }: { activeSection: string }) {
   return (
-    <section className="sticky top-20 z-40 bg-white border-b border-secondary-200 shadow-sm">
+    <section className="sticky top-20 z-40 bg-white border-b border-secondary-200 shadow-sm mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex gap-1 overflow-x-auto py-3 scrollbar-hide">
           {services.map((s) => (
@@ -334,8 +334,8 @@ export default function ServicesPage() {
   return (
     <>
       <title>Services – BHEL Engineering | Mobile Line Boring Perth WA</title>
-      <PageHero />
       <ServiceNav activeSection={activeSection} />
+      <PageHero />
       {services.map((service, index) => (
         <ServiceDetail key={service.id} service={service} index={index} />
       ))}
