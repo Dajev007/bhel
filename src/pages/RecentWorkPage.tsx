@@ -141,6 +141,9 @@ function ProjectGallery() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const galleryImages = [
+    { src: '/img/bhel1.JPG', category: 'Line Boring', title: 'On-site BHEL Project 1' },
+    { src: '/img/bhel2.JPG', category: 'Welding & Fabrication', title: 'On-site BHEL Project 2' },
+    { src: '/img/bhel3.JPG', category: 'Bore Facing & Alignment', title: 'On-site BHEL Project 3' },
     { src: '/img/1.jpg', category: 'Line Boring', title: 'On-site Line Boring' },
     { src: '/img/2.jpg', category: 'Line Boring', title: 'Precision Boring Setup' },
     { src: '/img/3.jpg', category: 'Welding & Fabrication', title: 'Heavy Component Welding' },
