@@ -98,9 +98,6 @@ function ProjectList() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary-950/90 via-primary-950/75 to-primary-950/40" />
                   <div className="relative z-10">
-                    <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-inner">
-                      {project.icon}
-                    </div>
                     <span className="inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-bold tracking-wide uppercase mb-2">
                       {project.service}
                     </span>
@@ -418,8 +415,8 @@ export default function RecentWorkPage() {
       <title>Recent Work – BHEL Engineering | Projects Portfolio</title>
       <PageHero />
       <ProjectList />
-      <VideoShowcase />
       <ProjectGallery />
+      <VideoShowcase />
       <CTASection />
     </>
   );

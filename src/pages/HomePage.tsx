@@ -454,6 +454,35 @@ function CTABanner() {
   );
 }
 
+/* ── Image Marquee ─────────────────────────────────── */
+function ImageMarquee() {
+  const marqueeImages = [
+    '/img/1.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg', '/img/5.jpg',
+    '/img/6.jpg', '/img/7.jpg', '/img/8.jpg', '/img/9.jpg', '/img/10.jpg',
+  ];
+
+  return (
+    <section className="py-16 bg-secondary-50 overflow-hidden border-t border-secondary-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
+        <span className="inline-block px-4 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">On-Site Work</span>
+        <h2 className="text-3xl font-bold text-secondary-900">Project Gallery Highlights</h2>
+      </div>
+      <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+        {[...marqueeImages, ...marqueeImages].map((src, index) => (
+          <div key={index} className="px-3">
+            <img
+              src={src}
+              alt={`Gallery highlight ${index}`}
+              className="h-48 md:h-64 object-cover w-[300px] md:w-[400px] rounded-2xl shadow-lg"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
@@ -464,6 +493,7 @@ export default function HomePage() {
       <WhyChooseUs />
       <Testimonials />
       <ServiceAreasPreview />
+      <ImageMarquee />
       <CTABanner />
     </>
   );
