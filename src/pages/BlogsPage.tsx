@@ -35,7 +35,7 @@ function FeaturedPost() {
   return (
     <section className="pt-24 pb-12 bg-secondary-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link to={`/blogs/${post.id}`} className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row group cursor-pointer hover:shadow-2xl transition-all duration-500 no-underline">
+        <Link to={`/blogs/${post.slug}`} className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row group cursor-pointer hover:shadow-2xl transition-all duration-500 no-underline">
           <div className={`lg:w-1/2 p-12 flex flex-col justify-center relative overflow-hidden ${post.color}`}>
             <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent mix-blend-overlay"></div>
             <span className="relative z-10 inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-bold tracking-wide uppercase mb-6 self-start backdrop-blur-sm">
@@ -81,7 +81,7 @@ function BlogGrid() {
           {posts.map((post, index) => {
             return (
               <Link
-                to={`/blogs/${post.id}`}
+                to={`/blogs/${post.slug}`}
                 key={post.id}
                 className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col group cursor-pointer hover:shadow-xl transition-all duration-500 animate-fade-in-up no-underline"
                 style={{ animationDelay: `${index * 100}ms` }}
@@ -121,7 +121,7 @@ function BlogGrid() {
 export default function BlogsPage() {
   return (
     <>
-      <title>Blogs – BHEL Engineering | Industry Insights</title>
+      <title>Industry Insights & Technical Guides | BHEL Engineering Blog — Mobile Line Boring WA</title>
       <PageHero />
       <FeaturedPost />
       <BlogGrid />
