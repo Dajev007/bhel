@@ -560,11 +560,11 @@ export default function BlogDetailPage() {
                       <p className="text-secondary-800 text-xs font-bold font-sans">(08) 6118 0954</p>
                     </div>
                   </a>
-                  <a href="mailto:sen@bheleng.com.au" className="flex items-center gap-3 p-3 bg-white rounded-xl border border-secondary-200 hover:border-primary-500 transition-colors group">
+                  <a href="mailto:bhelengperth@gmail.com" className="flex items-center gap-3 p-3 bg-white rounded-xl border border-secondary-200 hover:border-primary-500 transition-colors group">
                     <Mail className="w-5 h-5 text-primary-600 group-hover:text-accent flex-shrink-0" />
                     <div>
                       <p className="text-secondary-400 text-xxs uppercase tracking-wider font-bold">Email us</p>
-                      <p className="text-secondary-800 text-xs font-bold font-sans">sen@bheleng.com.au</p>
+                      <p className="text-secondary-800 text-xs font-bold font-sans">bhelengperth@gmail.com</p>
                     </div>
                   </a>
                 </div>

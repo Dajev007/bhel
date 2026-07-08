@@ -33,13 +33,13 @@ function PageHero() {
                 <p className="font-bold">(08) 6118 0954</p>
               </div>
             </a>
-            <a href="mailto:sen@bheleng.com.au" className="flex items-center gap-3 text-white">
+            <a href="mailto:bhelengperth@gmail.com" className="flex items-center gap-3 text-white">
               <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
                 <Mail className="w-5 h-5" />
               </div>
               <div>
                 <p className="text-primary-200 text-xs">Email us</p>
-                <p className="font-bold">sen@bheleng.com.au</p>
+                <p className="font-bold">bhelengperth@gmail.com</p>
               </div>
             </a>
           </div>
@@ -105,13 +105,13 @@ function ContactSection() {
                     <p className="text-secondary-900 font-semibold group-hover:text-primary-600 transition-colors">(08) 6118 0954</p>
                   </div>
                 </a>
-                <a href="mailto:sen@bheleng.com.au" className="flex items-start gap-4 group">
+                <a href="mailto:bhelengperth@gmail.com" className="flex items-start gap-4 group">
                   <div className="flex-shrink-0 w-12 h-12 bg-primary-100 group-hover:bg-primary-700 rounded-lg flex items-center justify-center text-primary-600 group-hover:text-white transition-colors">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-sm text-secondary-500">Email</p>
-                    <p className="text-secondary-900 font-semibold group-hover:text-primary-600 transition-colors">sen@bheleng.com.au</p>
+                    <p className="text-secondary-900 font-semibold group-hover:text-primary-600 transition-colors">bhelengperth@gmail.com</p>
                   </div>
                 </a>
                 <div className="flex items-start gap-4">
@@ -315,13 +315,13 @@ function MapSection() {
               <p className="font-bold text-secondary-900 group-hover:text-primary-600 transition-colors">(08) 6118 0954</p>
             </div>
           </a>
-          <a href="mailto:sen@bheleng.com.au" className="flex items-center gap-4 p-6 bg-secondary-50 rounded-2xl hover:bg-primary-50 transition-colors group">
+          <a href="mailto:bhelengperth@gmail.com" className="flex items-center gap-4 p-6 bg-secondary-50 rounded-2xl hover:bg-primary-50 transition-colors group">
             <div className="w-12 h-12 bg-primary-100 group-hover:bg-primary-700 rounded-xl flex items-center justify-center text-primary-600 group-hover:text-white transition-colors">
               <Mail className="w-6 h-6" />
             </div>
             <div>
               <p className="text-secondary-500 text-sm">Email us</p>
-              <p className="font-bold text-secondary-900 group-hover:text-primary-600 transition-colors text-sm">sen@bheleng.com.au</p>
+              <p className="font-bold text-secondary-900 group-hover:text-primary-600 transition-colors text-sm">bhelengperth@gmail.com</p>
             </div>
           </a>
           <div className="flex items-center gap-4 p-6 bg-secondary-50 rounded-2xl">

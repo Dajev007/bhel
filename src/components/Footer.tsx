@@ -74,7 +74,7 @@ export default function Footer() {
                 <Phone className="w-5 h-5" />
               </a>
               <a
-                href="mailto:sen@bheleng.com.au"
+                href="mailto:bhelengperth@gmail.com"
                 className="w-10 h-10 bg-secondary-800 rounded-lg flex items-center justify-center text-secondary-300 hover:bg-primary-600 hover:text-white transition-colors"
                 aria-label="Email"
               >
@@ -128,11 +128,11 @@ export default function Footer() {
                   <span className="font-semibold group-hover:text-accent transition-colors">(08) 6118 0954</span>
                 </div>
               </a>
-              <a href="mailto:sen@bheleng.com.au" className="flex items-start gap-3 group">
+              <a href="mailto:bhelengperth@gmail.com" className="flex items-start gap-3 group">
                 <Mail className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-secondary-400 text-xs mb-0.5">Email</p>
-                  <span className="font-semibold group-hover:text-accent transition-colors text-sm">sen@bheleng.com.au</span>
+                  <span className="font-semibold group-hover:text-accent transition-colors text-sm">bhelengperth@gmail.com</span>
                 </div>
               </a>
               <div className="flex items-start gap-3">
