@@ -36,12 +36,15 @@ function FeaturedPost() {
     <section className="pt-24 pb-12 bg-secondary-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link to={`/blogs/${post.slug}`} className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row group cursor-pointer hover:shadow-2xl transition-all duration-500 no-underline">
-          <div className={`lg:w-1/2 p-12 flex flex-col justify-center relative overflow-hidden ${post.color}`}>
-            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent mix-blend-overlay"></div>
-            <span className="relative z-10 inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-bold tracking-wide uppercase mb-6 self-start backdrop-blur-sm">
+          <div className={`lg:w-1/2 p-12 flex flex-col justify-end relative overflow-hidden`}>
+            <div className="absolute inset-0">
+              <img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"></div>
+            </div>
+            <span className="relative z-10 inline-block px-4 py-1 bg-accent text-white rounded-full text-sm font-bold tracking-wide uppercase mb-4 self-start shadow-md">
               Featured Insight
             </span>
-            <h2 className="relative z-10 text-3xl md:text-4xl font-bold text-white mb-6 leading-tight group-hover:-translate-y-1 transition-transform duration-300">
+            <h2 className="relative z-10 text-3xl md:text-4xl font-bold text-white mb-2 leading-tight group-hover:-translate-y-1 transition-transform duration-300">
               {post.title}
             </h2>
           </div>
@@ -86,9 +89,12 @@ function BlogGrid() {
                 className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col group cursor-pointer hover:shadow-xl transition-all duration-500 animate-fade-in-up no-underline"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className={`h-48 ${post.color} relative overflow-hidden flex items-end p-6`}>
-                  <div className="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]"></div>
-                  <span className="relative z-10 inline-block px-3 py-1 bg-white/20 text-white rounded-full text-xs font-bold tracking-wide uppercase backdrop-blur-sm">
+                <div className={`h-56 relative overflow-hidden flex items-start p-6`}>
+                  <div className="absolute inset-0">
+                    <img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                  </div>
+                  <span className={`relative z-10 inline-block px-3 py-1 ${post.color} text-white rounded-full text-xs font-bold tracking-wide uppercase shadow-md`}>
                     {post.category}
                   </span>
                 </div>

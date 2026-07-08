@@ -16,7 +16,7 @@ export const blogPosts = [
     category: 'Industry Insights',
     readTime: '7 min read',
     color: 'bg-primary-700',
-    image: '/img/custom_hero_banner.png',
+    image: '/img/blog_mining_downtime.png',
     keywords: ['equipment downtime mining cost', 'mining downtime losses Australia', 'mobile line boring response time', 'on-site machining reduces downtime', 'bore repair emergency WA'],
   },
   {
@@ -32,7 +32,7 @@ export const blogPosts = [
     category: 'Technical Focus',
     readTime: '8 min read',
     color: 'bg-accent',
-    image: '/img/services_hero_banner.png',
+    image: '/img/blog_bearing_alignment.png',
     keywords: ['acoustic alignment bearing installation', 'precision bush installation mining', 'bearing alignment techniques', 'bush installation Western Australia', 'bearing lifespan extension'],
   },
   {
@@ -48,7 +48,7 @@ export const blogPosts = [
     category: 'Services',
     readTime: '8 min read',
     color: 'bg-green-600',
-    image: '/img/recent_work_hero_banner.png',
+    image: '/img/blog_mobile_machining.png',
     keywords: ['mobile line boring vs workshop', 'on-site machining cost comparison', 'portable line boring advantages', 'line boring cost Perth', 'workshop vs mobile bore repair'],
   },
   {
@@ -64,7 +64,7 @@ export const blogPosts = [
     category: 'Maintenance Tips',
     readTime: '9 min read',
     color: 'bg-purple-600',
-    image: '/img/blogs_hero_banner.png',
+    image: '/img/blog_excavator_maintenance.png',
     keywords: ['excavator preventative maintenance', 'pin bore inspection guide', 'heavy equipment maintenance tips', 'excavator bore wear prevention', 'mining equipment inspection schedule'],
   },
   {
@@ -80,7 +80,7 @@ export const blogPosts = [
     category: 'Our Operations',
     readTime: '7 min read',
     color: 'bg-orange-600',
-    image: '/img/contact_hero_banner.png',
+    image: '/img/blog_fifo_engineering.png',
     keywords: ['FIFO engineering challenges WA', 'remote line boring Pilbara', 'mobile machining Goldfields', 'on-site machining remote mining', 'FIFO maintenance services'],
   },
   {
@@ -96,7 +96,7 @@ export const blogPosts = [
     category: 'Equipment',
     readTime: '7 min read',
     color: 'bg-blue-800',
-    image: '/img/services_hero_banner.png',
+    image: '/img/blog_line_boring.png',
     keywords: ['Hofmann Triangle line boring', 'portable line boring equipment', 'on-site boring bar tools', 'line boring equipment Australia', 'precision bore repair tools'],
   }
 ];
