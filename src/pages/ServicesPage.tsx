@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Settings, Flame, Target, Cog, CircleDot, AlertTriangle,
   CheckCircle, ArrowRight, Phone, Gauge, Truck, Clock, Shield,
@@ -308,7 +308,6 @@ function CapabilitiesBanner() {
 }
 
 export default function ServicesPage() {
-  const location = useLocation();
   const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
