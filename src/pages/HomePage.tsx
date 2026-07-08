@@ -144,18 +144,14 @@ function Hero() {
 /* ── Middle Image Banner ─────────────────────────────────── */
 function MiddleBanner() {
   return (
-    <section className="relative">
-      <img
-        src="/img/BHEL-Middle-Image-Home-Creative.jpg"
-        alt="BHEL Engineering - Precision Machining Solutions"
-        className="w-full h-[300px] md:h-[400px] object-cover"
-      />
-      <div className="absolute inset-0 bg-primary-900/60 flex items-center justify-center">
-        <div className="text-center text-white max-w-3xl px-4">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Your Trusted On-Site Engineering Partner
+    <section className="relative py-24 md:py-32 flex items-center justify-center min-h-[300px] md:min-h-[400px] overflow-hidden bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up">
+        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 md:p-12 rounded-3xl shadow-2xl">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+            Your Trusted On-Site <br className="hidden sm:block" />
+            <span className="text-accent">Engineering Partner</span>
           </h2>
-          <p className="text-lg md:text-xl text-primary-100">
+          <p className="text-lg md:text-xl text-primary-50 max-w-2xl mx-auto leading-relaxed">
             Delivering precision machining solutions to mining, construction, and industrial operations across Western Australia.
           </p>
         </div>
